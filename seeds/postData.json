@@ -1,0 +1,17 @@
+[
+  {
+    "title": "HTML",
+    "content": "Hypertext MArkup Language to be use to Develop Web pages",
+    "date_created": 11282023
+  },
+  {
+    "title": "The Ultimate Tech Quiz",
+    "content": "A web app that will give users 10 new technical questions each day and track their progress in things like programming, cybersecurity, database architecture, and more!",
+    "date_created": 11282023
+  },
+  {
+    "title": "CSS",
+    "content": "Cascading Style Sheets to help HTML elements to be displayed.",
+    "date_created": 11282023
+  }
+]
