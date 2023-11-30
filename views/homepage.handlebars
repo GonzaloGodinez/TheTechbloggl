@@ -1,16 +1,14 @@
 <!-- Loop over each object in the projects array -->
-{{#each post as |post| }}
+{{#each posts as |post| }}
 <div class="row mb-4 post">
   <div class="col-md-5">
     <h2>
-      <!-- Call helper function with triple brackets to render the emoji span as HTML enter GGL here -->
       <a href="/post/{{post.id}}">{{post.name}}</a>
     </h2>
     <p>
       <span for="img" aria-label="tech">💻</span>
       <!-- Pass title value to the helper function -->
-      <span class="title">{{ post.title}}</span>
-      needed!
+      <span class="title">{{post.title}}</span>
     </p>
     <p>Created by {{post.user.name}} on {{format_date post.date_created}}</p>
   </div>

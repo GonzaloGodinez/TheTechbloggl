@@ -7,10 +7,11 @@ const newFormHandler = async (event) => {
 
   // if (title && content && comment) {
     if (title && content) {
+    console.log(title, content);
     const response = await fetch(`/api/post`, {
       method: 'POST',
       // body: JSON.stringify({ name, content, comment }),
-      body: JSON.stringify({ name, content, comment }),
+      body: JSON.stringify({ title, content}),
       headers: {
         'Content-Type': 'application/json',
       },
