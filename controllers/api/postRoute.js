@@ -18,7 +18,7 @@ router.get('/', async (req, res) => {
         }
       }
     );
-    res.status(200).json(posttData);
+    res.status(200).json(postData);
   } catch (err) {
     res.status(500).json(err);
   }
