@@ -1,13 +1,12 @@
 const router = require('express').Router();
 // added sequelize
 const { json } = require('sequelize');
-const { Post } = require('../../models');
+const { Post, Comment } = require('../../models');
 const withAuth = require('../../utils/auth');
-// add put and view all and 1 from Post 
-// here
+// add view all and 1 from Post 
 // The `/api/post` endpoint
 
-// GET all post
+// GET all post from here
 router.get('/', async (req, res) => {
   // find all post
   try {
@@ -47,7 +46,7 @@ router.get('/:id', async (req, res) => {
   }
   // included its associated Comment data
 });
-// there
+// include all post and comments through here
 
 router.post('/', withAuth, async (req, res) => {
   try {
@@ -61,6 +60,10 @@ router.post('/', withAuth, async (req, res) => {
     res.status(400).json(err);
   }
 });
+
+// add blog comments 
+// add update
+
 
 router.delete('/:id', withAuth, async (req, res) => {
   try {
