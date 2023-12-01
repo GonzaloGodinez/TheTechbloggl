@@ -27,23 +27,32 @@ router.get('/', async (req, res) => {
 // GET one post
 router.get('/:id', async (req, res) => {
   // find a single post by its `id`
-  try {
-    const postData = await Post.findOne(
-      { where:{
-        id: req.params.id
+// included comments from user
+try {
+  const postData = await Post.findByPk(req.params.id, {
+    include: [
+      User,
+      {
+        model: Comment,
+        include: [User],
       },
-      include:  {
-        model: Comment
-      }
-      }
-    );
-    if (!postData) {
-      return res.status(404).json({message: 'no Post found for this id'})
-    }
-    res.status(200).json(postData)
-  } catch(err) {
-    res.status(500).json(err);
+    ],
+  });
+console.log(postData)
+  if (postData) {
+    console.log("if")
+    const post = postData.get({ plain: true });
+
+    res.render('post', { post });
+  } else {
+    console.log("else")
+    res.status(404).end();
   }
+} catch (err) {
+  res.status(500).json(err);
+}
+// included comments
+
   // included its associated Comment data
 });
 // include all post and comments through here
@@ -55,13 +64,25 @@ router.post('/', withAuth, async (req, res) => {
       user_id: req.session.user_id,
     });
 
-    res.status(200).json(newPost);
+    const newComment = await Comment.create({
+      user_id: req.session.user_id,
+      post_id: newPost.id,
+      comment: req.body.comment,
+    });
+    // add blog comments 
+    const post = newPost.get({ plain: true })
+    const comment = newComment.get({ plain: true })
+    console.log(post)
+    console.log(comment)
+    post.comment = comment.comment
+
+    res.status(200).json(post);
   } catch (err) {
     res.status(400).json(err);
   }
 });
 
-// add blog comments 
+
 // add update
 
 
