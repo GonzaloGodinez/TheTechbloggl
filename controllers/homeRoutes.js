@@ -13,7 +13,7 @@ router.get('/', async (req, res) => {
         },
         {
           model: Comment,
-          attributes: ['id','comment'],
+          attributes: ['id', 'comment'],
         },
       ],
     });
@@ -22,8 +22,8 @@ router.get('/', async (req, res) => {
     const posts = postData.map((post) => post.get({ plain: true }));
     console.log(posts)
     // Pass serialized data and session flag into template
-    res.render('homepage', { 
-      layout: 'main', 
+    res.render('homepage', {
+      layout: 'main',
       // logged_in: req.session.logged_in 
       posts
     });
@@ -32,29 +32,26 @@ router.get('/', async (req, res) => {
   }
 });
 
-
-
 //router.get('/post/:id', async (req, res) => {
- // 
- // try {
-   // const postData = await Post.findByPk(req.params.id, {
-    //  include: [
-      //  {
-    //      model: User,
-          //attributes: ['name'],
-  //      },
+// try {
+// const postData = await Post.findByPk(req.params.id, {
+//  include: [
+//  {
+//      model: User,
+//attributes: ['name'],
+//      },
 //      ],
-    //});
+//});
 
-    //const post = postData.get({ plain: true });
+//const post = postData.get({ plain: true });
 
-    //res.render('homepage', {
-      //...post,
-      //logged_in: req.session.logged_in
+//res.render('homepage', {
+//...post,
+//logged_in: req.session.logged_in
 //    });
-  //} catch (err) {
-   // res.status(500).json(err);
- // }
+//} catch (err) {
+// res.status(500).json(err);
+// }
 //});
 
 // Use withAuth middleware to prevent access to route

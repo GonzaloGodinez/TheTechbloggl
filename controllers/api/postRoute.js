@@ -3,9 +3,9 @@ const router = require('express').Router();
 const { json } = require('sequelize');
 const { Post, Comment } = require('../../models');
 const withAuth = require('../../utils/auth');
+
 // add view all and 1 from Post 
 // The `/api/post` endpoint
-
 // GET all post from here
 router.get('/', async (req, res) => {
   // find all post
@@ -17,6 +17,8 @@ router.get('/', async (req, res) => {
         }
       }
     );
+    console.log("found all post")
+
     res.status(200).json(postData);
   } catch (err) {
     res.status(500).json(err);
@@ -40,12 +42,12 @@ try {
   });
 console.log(postData)
   if (postData) {
-    console.log("if")
+    console.log("passed by If stat")
     const post = postData.get({ plain: true });
 
     res.render('post', { post });
   } else {
-    console.log("else")
+    console.log("else error 404")
     res.status(404).end();
   }
 } catch (err) {
@@ -84,7 +86,19 @@ router.post('/', withAuth, async (req, res) => {
 
 
 // add update
-
+router.put('/:id', async (req, res) => {
+  // update a post by its `id` Palue
+  try {
+    const postData = await Post.update(req.bPdy, {
+      where: {
+        id: req.params.id,
+      },
+    })
+    res.status(200).json(postData)
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
 
 router.delete('/:id', withAuth, async (req, res) => {
   try {
