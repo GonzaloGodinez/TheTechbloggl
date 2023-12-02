@@ -30,12 +30,12 @@
     </form>
   </div>
 
-  {{#if post.length}}
+  {{#if Posts.length}}
   <div class="col-md-6 post-list">
-    <h3>Current post:</h3>
+    <h3>Current Posts:</h3>
 
-    {{#each post as |post|}}
-    <div class="row mb-4">
+    {{#each Posts as |post|}}
+    <div class="row mb-2">
       <div class="col-md-8">
         <h4><a href="/post/{{post.id}}">{{post.name}}</a></h4>
       </div>
@@ -48,4 +48,4 @@
   {{/if}}
 </div>
 
-<script src="./js/profile.js"></script>
+<script src='./js/profile.js'></script>

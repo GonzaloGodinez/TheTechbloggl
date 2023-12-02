@@ -6,7 +6,7 @@ const newFormHandler = async (event) => {
   const comment = document.querySelector('#post-comment').value.trim();
 
   // if (title && content && comment) {
-    if (title && content && comment) {
+    if (title && content ) {
     // console.log(title, content);
     const response = await fetch(`/api/post`, {
       method: 'POST',

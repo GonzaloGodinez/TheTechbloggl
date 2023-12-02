@@ -25,14 +25,14 @@ Comment.init(
     user_id: {
         type: DataTypes.INTEGER,
         references: {
-            model: "user", 
+            model: "User", 
             key: "id"
         }
     },
     post_id: {
         type: DataTypes.INTEGER,
         references: {
-            model: "post",
+            model: "Post",
             key: "id",
         }
     }
@@ -43,10 +43,10 @@ Comment.init(
     timestamps: false,
     freezeTableName: true,
     underscored: true,
-    modelName: 'comment',
+    modelName: 'Comment',
   }
 );
 
 module.exports = Comment;
 
-// comment is saved and the post is updated to display the comment, the comment creator’s username, and the date created
+// comment is saved and the post is updated to display the Comment, the comment creator’s username, and the date created
