@@ -1,5 +1,6 @@
 <div class="text-center">
   <h2>{{name}}</h2>
+  <p>{{{get_emoji}}}</p>
   <p>{{content}}</p>
 
   <p>Created by {{user.name}} on {{format_date date_created}}</p>
@@ -7,7 +8,7 @@
     <span for="img" aria-label="tech">💻</span>
     <span class="content">{{content}}</span>
   </p>
-  {{comment}}
+  <p>{{comment}}</p>
   <p>
     <button class="btn btn-primary">The Tech Blog</button>
   </p>
