@@ -24,8 +24,8 @@ router.get('/', async (req, res) => {
     // Pass serialized data and session flag into template
     res.render('homepage', {
       layout: 'main',
-      // logged_in: req.session.logged_in 
-      posts
+      posts,
+      logged_in: req.session.logged_in 
     });
   } catch (err) {
     res.status(500).json(err);
@@ -38,7 +38,7 @@ router.get('/', async (req, res) => {
 //  include: [
 //  {
 //      model: User,
-//attributes: ['name'],
+//      attributes: ['name'],
 //      },
 //      ],
 //});
@@ -46,7 +46,7 @@ router.get('/', async (req, res) => {
 //const post = postData.get({ plain: true });
 
 //res.render('homepage', {
-//...post,
+//...posts,
 //logged_in: req.session.logged_in
 //    });
 //} catch (err) {

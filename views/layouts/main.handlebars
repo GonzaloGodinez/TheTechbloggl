@@ -18,12 +18,18 @@
       </h1>
       <nav>
         <a href="/">Home</a>
+      
+        {{#if Home}}
+        <a href="/profile">Dashboard</a> |
+        <a href="/login">Login</a>
+        {{else}}
         <!-- Conditionally render login or logout links -->
         {{#if logged_in}}
         <a href="/profile">Dashboard</a> |
         <button class="no-button" id="logout">logout</button>
         {{else}}
         <a href="/login">Login</a>
+        {{/if}}
         {{/if}}
       </nav>
     </header>
