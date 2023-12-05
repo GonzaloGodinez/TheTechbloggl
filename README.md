@@ -3,8 +3,11 @@
 ## link to Repo
 [link to GGL repository url github](https://github.com/GonzaloGodinez/TheTechbloggl)
 
+## link to Heroku
+[link to Heroku](https://thetechbloggl-2fedddb9c7c5.herokuapp.com/)
+
 ## Description
-I created this project using handlebars and ORM to build the back end for a blogger_db database with four three tables: Comments, Post, and User using Express.js API to interact with information stored in the database interfacing with handlebars as the front end to create, update and delete blogger model tables. 
+I created this project using handlebars and ORM to build the back end for a blogger_db database with three tables: Comments, Post, and User using Express.js API to interact with information stored in the database interfacing with handlebars as the front end to create, update and delete blogger model tables. 
 
 ## Table of Contents
 
@@ -36,6 +39,13 @@ View, Add, updates and delete models for:
 ## Samples
 
 ![Main page blog title](./Assets/TheTechBlog.png)
+![Home Login bar tab page](./Assets/TheTechBlogHomeLoginPg.png)
+![Add Comment page](./Assets/TTBAddCom.png)
+![Delete Post](./Assets/TTBDeleteOpt.png)
+![Login Screen](./Assets/TTBLogin.png)
+![Log Out](./Assets/TTBLogOut.png)
+![New Post](./Assets/TTBNewPost.png)
+![Update Post](./Assets/TTBUpdOpt.png)
 
 ## License
 MIT License
