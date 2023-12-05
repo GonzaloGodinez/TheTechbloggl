@@ -39,14 +39,38 @@ router.get('/post/:id', async (req, res) => {
         {
           model: User,
           attributes: ['name'],
+        },       {
+          model: Comment,
+          include: [User],
         },
       ],
     });
 
     const post = postData.get({ plain: true });
-
+    console.log (post)
     res.render('post', {
-      ...posts,
+      ...post,
+      logged_in: req.session.logged_in
+    });
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
+router.get('/edit/:id', async (req, res) => {
+  try {
+    const postData = await Post.findByPk(req.params.id, {
+      include: [
+        {
+          model: User,
+          attributes: ['name'],
+        },    
+      ],
+    });
+
+    const post = postData.get({ plain: true });
+    console.log (post)
+    res.render('edit', {
+      ...post,
       logged_in: req.session.logged_in
     });
   } catch (err) {

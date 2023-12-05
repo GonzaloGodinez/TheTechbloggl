@@ -1,6 +1,6 @@
 const router = require('express').Router();
 // added sequelize
-const { json } = require('sequelize');
+// const { json } = require('sequelize');
 const { Post, Comment } = require('../../models');
 const withAuth = require('../../utils/auth');
 
@@ -13,23 +13,31 @@ router.post('/', withAuth, async (req, res) => {
       user_id: req.session.user_id,
     });
 
-    const newComment = await Comment.create({
-      user_id: req.session.user_id,
-      post_id: newPost.id,
-      comment: req.body.comment,
-    });
     // add blog comments 
-    const post = newPost.get({ plain: true })
-    const comment = newComment.get({ plain: true })
-    console.log(post)
-    console.log(comment)
-    post.comment = comment.comment
+    console.log(newPost)
+    console.log("Ready to post comments")
 
-    res.status(200).json(post);
+    res.status(200).json(newPost);
   } catch (err) {
     res.status(400).json(err);
   }
 });
+
+// add update
+router.put('/:id', async (req, res) => {
+  // update a post by its `id` Value
+  try {
+    const postData = await Post.update(req.body, {
+      where: {
+        id: req.params.id,
+      },
+    })
+    res.status(200).json(postData)
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
+
 
 router.delete('/:id', withAuth, async (req, res) => {
   try {

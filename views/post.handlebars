@@ -1,5 +1,5 @@
 <div class="text-center">
-  <h2>{{name}}</h2>
+  <h2>{{title}}</h2>
   <p>{{{get_emoji}}}</p>
   <p>{{content}}</p>
 
@@ -7,7 +7,25 @@
   <p>
     <span for="img" aria-label="tech">💻</span>
     <span class="content">{{content}}</span>
- 
-    <button class="btn btn-primary">The Tech Blog</button>
+<ul>
+  {{#each Comments as |comment| }}
+  <li>
+    {{comment.comment}} by {{comment.User.name}}
+  </li>
+  {{/each}}
+</ul>
+
+  <form class="form new-comment-form">
+    <input class="form-input" type="hidden" id="post-id" title="post-id" hidden value="{{id}}"/>
+    <div class="form-group">
+      <label for="post-comment">comment:</label>
+      <textarea class="form-input" id="post-comment" name="post-comment"></textarea>
+    </div>
+    <div class="form-group">
+      <button type="submit" class="btn btn-primary">Add Comment</button>
+    </div>
+  </form>
   </p>
 </div>
+
+<script src="/js/comment.js"></script>
